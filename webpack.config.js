@@ -11,7 +11,7 @@ module.exports = (env, argv) => {
   const isDev = !isProd;
 
   const filename = (ext) => isProd ?
-      `[name].[contenthash].bundle.${ext}` : `[name].bundle.${ext}`;
+        `[name].[contenthash].bundle.${ext}` : `[name].bundle.${ext}`;
 
   const plugins = () => {
     const base = [
@@ -21,8 +21,10 @@ module.exports = (env, argv) => {
       }),
       new CopyPlugin({
         patterns: [
-          {from: path.resolve(__dirname, 'src/favicon.ico'),
-            to: path.resolve(__dirname, 'dist')},
+          {
+            from: path.resolve(__dirname, 'src/favicon.ico'),
+            to: path.resolve(__dirname, 'dist')
+          },
         ],
       }),
       new MiniCssExtractPlugin({
@@ -81,8 +83,8 @@ module.exports = (env, argv) => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
-            }
+              presets: ['@babel/preset-env'],
+            },
           }
         }
 
